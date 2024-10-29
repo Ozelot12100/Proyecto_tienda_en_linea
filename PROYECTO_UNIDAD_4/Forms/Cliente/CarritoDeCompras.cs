@@ -114,9 +114,7 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
             nuevoReporte.Generar();
             UtilidadesPedido.reportesGenerados.Add(nuevoReporte);
 
-            // Mostrar mensaje de compra exitosa
-            MessageBox.Show($"Compra finalizada exitosamente por un total de ${total}.", "Compra Exitosa",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
 
             // Limpiar el carrito y actualizar el DataGridView
             UtilidadesPedido.productosComprados.Clear();

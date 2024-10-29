@@ -27,7 +27,9 @@ namespace PROYECTO_UNIDAD_4.Clases.Reportes
         }
         public void Generar()
         {
-           MessageBox.Show($"Compra realizada con exito por un total de ${Total}");
+            // Mostrar mensaje de compra exitosa
+            MessageBox.Show($"Compra finalizada exitosamente por un total de ${UtilidadesPedido.CalcularTotal(UtilidadesPedido.productosComprados)}.", "Compra Exitosa",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
