@@ -207,7 +207,7 @@
             lblMostrarSubtotal.BorderStyle = BorderStyle.FixedSingle;
             lblMostrarSubtotal.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblMostrarSubtotal.ForeColor = Color.White;
-            lblMostrarSubtotal.Location = new Point(195, 376);
+            lblMostrarSubtotal.Location = new Point(195, 362);
             lblMostrarSubtotal.Name = "lblMostrarSubtotal";
             lblMostrarSubtotal.Size = new Size(5, 4);
             lblMostrarSubtotal.TabIndex = 8;
@@ -219,7 +219,7 @@
             lblMostrarTotal.BorderStyle = BorderStyle.FixedSingle;
             lblMostrarTotal.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblMostrarTotal.ForeColor = Color.White;
-            lblMostrarTotal.Location = new Point(198, 490);
+            lblMostrarTotal.Location = new Point(193, 476);
             lblMostrarTotal.Name = "lblMostrarTotal";
             lblMostrarTotal.Size = new Size(5, 4);
             lblMostrarTotal.TabIndex = 9;
