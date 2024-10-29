@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             cmbMetodoPago = new Guna.UI2.WinForms.Guna2ComboBox();
             dgvCarrito = new Guna.UI2.WinForms.Guna2DataGridView();
             btnEliminar = new Button();
@@ -57,7 +57,7 @@
             // cmbMetodoPago
             // 
             cmbMetodoPago.BackColor = Color.Transparent;
-            cmbMetodoPago.CustomizableEdges = customizableEdges1;
+            cmbMetodoPago.CustomizableEdges = customizableEdges5;
             cmbMetodoPago.DrawMode = DrawMode.OwnerDrawFixed;
             cmbMetodoPago.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMetodoPago.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -69,33 +69,33 @@
             cmbMetodoPago.Location = new Point(180, 265);
             cmbMetodoPago.Margin = new Padding(3, 2, 3, 2);
             cmbMetodoPago.Name = "cmbMetodoPago";
-            cmbMetodoPago.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            cmbMetodoPago.ShadowDecoration.CustomizableEdges = customizableEdges6;
             cmbMetodoPago.Size = new Size(224, 36);
             cmbMetodoPago.TabIndex = 1;
             // 
             // dgvCarrito
             // 
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dgvCarrito.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dgvCarrito.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvCarrito.BackgroundColor = Color.PaleTurquoise;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Gray;
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 0, 192);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.Gray;
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 0, 192);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvCarrito.ColumnHeadersHeight = 24;
             dgvCarrito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvCarrito.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvCarrito.DefaultCellStyle = dataGridViewCellStyle6;
             dgvCarrito.GridColor = Color.FromArgb(231, 229, 255);
             dgvCarrito.Location = new Point(10, 44);
             dgvCarrito.Margin = new Padding(3, 2, 3, 2);
@@ -162,7 +162,7 @@
             btnFinalizarCompra.ForeColor = Color.White;
             btnFinalizarCompra.Image = Properties.Resources.finalizar_compra;
             btnFinalizarCompra.ImageAlign = ContentAlignment.MiddleRight;
-            btnFinalizarCompra.Location = new Point(682, 420);
+            btnFinalizarCompra.Location = new Point(678, 413);
             btnFinalizarCompra.Margin = new Padding(3, 2, 3, 2);
             btnFinalizarCompra.Name = "btnFinalizarCompra";
             btnFinalizarCompra.Size = new Size(191, 49);
@@ -174,7 +174,7 @@
             // cmbTipoPago
             // 
             cmbTipoPago.BackColor = Color.Transparent;
-            cmbTipoPago.CustomizableEdges = customizableEdges3;
+            cmbTipoPago.CustomizableEdges = customizableEdges7;
             cmbTipoPago.DrawMode = DrawMode.OwnerDrawFixed;
             cmbTipoPago.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoPago.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -186,7 +186,7 @@
             cmbTipoPago.Location = new Point(180, 305);
             cmbTipoPago.Margin = new Padding(3, 2, 3, 2);
             cmbTipoPago.Name = "cmbTipoPago";
-            cmbTipoPago.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            cmbTipoPago.ShadowDecoration.CustomizableEdges = customizableEdges8;
             cmbTipoPago.Size = new Size(154, 36);
             cmbTipoPago.TabIndex = 6;
             // 
