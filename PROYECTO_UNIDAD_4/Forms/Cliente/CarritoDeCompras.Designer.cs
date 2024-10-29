@@ -207,7 +207,7 @@
             lblMostrarSubtotal.BorderStyle = BorderStyle.FixedSingle;
             lblMostrarSubtotal.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblMostrarSubtotal.ForeColor = Color.White;
-            lblMostrarSubtotal.Location = new Point(227, 362);
+            lblMostrarSubtotal.Location = new Point(195, 376);
             lblMostrarSubtotal.Name = "lblMostrarSubtotal";
             lblMostrarSubtotal.Size = new Size(5, 4);
             lblMostrarSubtotal.TabIndex = 8;
@@ -219,7 +219,7 @@
             lblMostrarTotal.BorderStyle = BorderStyle.FixedSingle;
             lblMostrarTotal.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblMostrarTotal.ForeColor = Color.White;
-            lblMostrarTotal.Location = new Point(229, 476);
+            lblMostrarTotal.Location = new Point(198, 490);
             lblMostrarTotal.Name = "lblMostrarTotal";
             lblMostrarTotal.Size = new Size(5, 4);
             lblMostrarTotal.TabIndex = 9;
@@ -231,7 +231,7 @@
             lblDescuento.BorderStyle = BorderStyle.FixedSingle;
             lblDescuento.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblDescuento.ForeColor = Color.White;
-            lblDescuento.Location = new Point(229, 401);
+            lblDescuento.Location = new Point(192, 404);
             lblDescuento.Name = "lblDescuento";
             lblDescuento.Size = new Size(2, 21);
             lblDescuento.TabIndex = 10;
@@ -242,7 +242,7 @@
             lblImpuestos.BorderStyle = BorderStyle.FixedSingle;
             lblImpuestos.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblImpuestos.ForeColor = Color.White;
-            lblImpuestos.Location = new Point(229, 441);
+            lblImpuestos.Location = new Point(192, 441);
             lblImpuestos.Name = "lblImpuestos";
             lblImpuestos.Size = new Size(2, 21);
             lblImpuestos.TabIndex = 11;
@@ -287,9 +287,9 @@
             lblMTotal.ForeColor = Color.Cyan;
             lblMTotal.Location = new Point(141, 476);
             lblMTotal.Name = "lblMTotal";
-            lblMTotal.Size = new Size(63, 18);
+            lblMTotal.Size = new Size(51, 18);
             lblMTotal.TabIndex = 15;
-            lblMTotal.Text = "Total:  $";
+            lblMTotal.Text = "Total: ";
             // 
             // lBLcaRROO
             // 
@@ -308,7 +308,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 90, 150);
-            ClientSize = new Size(1019, 512);
+            ClientSize = new Size(1019, 546);
             Controls.Add(lBLcaRROO);
             Controls.Add(lblMTotal);
             Controls.Add(lblMimpuestos);

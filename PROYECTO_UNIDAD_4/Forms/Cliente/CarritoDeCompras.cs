@@ -122,7 +122,7 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
             UtilidadesPedido.productosComprados.Clear();
             dgvCarrito.DataSource = null; // Limpiar la fuente de datos
             dgvCarrito.DataSource = UtilidadesPedido.productosComprados; // Reasignar la lista vacía
-
+            ActualizarLabels();
         }
 
 
@@ -172,21 +172,26 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
                 dgvCarrito.DataSource = UtilidadesPedido.productosComprados; // Reasignar la lista actualizada
 
                 MessageBox.Show("Producto eliminado del carrito y devuelto al inventario correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ActualizarLabels();
+
             }
 
 
 
         }
 
-
+        private void ActualizarLabels()
+        {
+            lblMostrarSubtotal.Text = UtilidadesPedido.CalcularSubtotal(UtilidadesPedido.productosComprados).ToString("C2");
+            lblImpuestos.Text = UtilidadesPedido.CalcularImpuestos(UtilidadesPedido.productosComprados).ToString("C2");
+            lblDescuento.Text = UtilidadesPedido.CalcularDescuento(UtilidadesPedido.productosComprados).ToString("C2");
+            lblMostrarTotal.Text = UtilidadesPedido.CalcularTotal(UtilidadesPedido.productosComprados).ToString("C2");
+        }
 
         private void CarritoDeCompras_Load(object sender, EventArgs e)
         {
             dgvCarrito.DataSource = UtilidadesPedido.productosComprados;
-            lblMostrarSubtotal.Text = UtilidadesPedido.CalcularSubtotal(UtilidadesPedido.productosComprados).ToString();
-            lblImpuestos.Text = UtilidadesPedido.CalcularImpuestos(UtilidadesPedido.productosComprados).ToString();
-            lblDescuento.Text = UtilidadesPedido.CalcularDescuento(UtilidadesPedido.productosComprados).ToString();
-            lblMostrarTotal.Text = UtilidadesPedido.CalcularTotal(UtilidadesPedido.productosComprados).ToString();
+            ActualizarLabels();
         }
 
         private void dgvCarrito_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
