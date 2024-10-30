@@ -47,10 +47,6 @@ namespace PROYECTO_UNIDAD_4.Forms
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             picLogo = new Guna.UI2.WinForms.Guna2GradientTileButton();
             btnSalir = new Guna.UI2.WinForms.Guna2Button();
@@ -59,13 +55,10 @@ namespace PROYECTO_UNIDAD_4.Forms
             btnRopa = new Guna.UI2.WinForms.Guna2GradientTileButton();
             guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             btnCarrito = new Guna.UI2.WinForms.Guna2Button();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             btnCerrar = new Guna.UI2.WinForms.Guna2Button();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             pnlContenedor = new Panel();
             guna2Panel1.SuspendLayout();
             guna2ShadowPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
             // 
             // guna2Panel1
@@ -206,9 +199,7 @@ namespace PROYECTO_UNIDAD_4.Forms
             // 
             guna2ShadowPanel1.BackColor = Color.Transparent;
             guna2ShadowPanel1.Controls.Add(btnCarrito);
-            guna2ShadowPanel1.Controls.Add(guna2PictureBox1);
             guna2ShadowPanel1.Controls.Add(btnCerrar);
-            guna2ShadowPanel1.Controls.Add(guna2TextBox1);
             guna2ShadowPanel1.Dock = DockStyle.Top;
             guna2ShadowPanel1.FillColor = Color.FromArgb(0, 80, 200);
             guna2ShadowPanel1.Location = new Point(189, 0);
@@ -236,25 +227,11 @@ namespace PROYECTO_UNIDAD_4.Forms
             btnCarrito.TabIndex = 1;
             btnCarrito.Click += btnCarrito_Click_1;
             // 
-            // guna2PictureBox1
-            // 
-            guna2PictureBox1.CustomizableEdges = customizableEdges15;
-            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(630, 39);
-            guna2PictureBox1.Margin = new Padding(3, 4, 3, 4);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2PictureBox1.Size = new Size(51, 47);
-            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            guna2PictureBox1.TabIndex = 0;
-            guna2PictureBox1.TabStop = false;
-            // 
             // btnCerrar
             // 
             btnCerrar.BackColor = Color.Transparent;
             btnCerrar.Cursor = Cursors.Hand;
-            btnCerrar.CustomizableEdges = customizableEdges17;
+            btnCerrar.CustomizableEdges = customizableEdges15;
             btnCerrar.DisabledState.BorderColor = Color.DarkGray;
             btnCerrar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCerrar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -265,31 +242,10 @@ namespace PROYECTO_UNIDAD_4.Forms
             btnCerrar.Image = Properties.Resources.logSalir;
             btnCerrar.Location = new Point(1111, 12);
             btnCerrar.Name = "btnCerrar";
-            btnCerrar.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnCerrar.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnCerrar.Size = new Size(25, 25);
             btnCerrar.TabIndex = 0;
             btnCerrar.Click += btnCerrar_Click;
-            // 
-            // guna2TextBox1
-            // 
-            guna2TextBox1.CustomizableEdges = customizableEdges19;
-            guna2TextBox1.DefaultText = "Buscar";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(241, 37);
-            guna2TextBox1.Margin = new Padding(3, 5, 3, 5);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            guna2TextBox1.Size = new Size(379, 48);
-            guna2TextBox1.TabIndex = 0;
             // 
             // pnlContenedor
             // 
@@ -316,7 +272,6 @@ namespace PROYECTO_UNIDAD_4.Forms
             Load += ClienteDashBoard_Load;
             guna2Panel1.ResumeLayout(false);
             guna2ShadowPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -328,10 +283,8 @@ namespace PROYECTO_UNIDAD_4.Forms
         private Guna.UI2.WinForms.Guna2GradientTileButton btnAlimento;
         private Guna.UI2.WinForms.Guna2GradientTileButton picLogo;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Panel pnlContenedor;
         private Guna.UI2.WinForms.Guna2Button btnCarrito;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnCerrar;
         private Guna.UI2.WinForms.Guna2Button btnSalir;
     }

@@ -14,99 +14,116 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
 {
     public partial class formRopa : Form
     {
+        private ProductoRopa productoSeleccionado;
+        private List<ProductoRopa> productosRopa;
+
         public formRopa()
         {
             InitializeComponent();
+            this.Load += formRopa_Load;
+            dgvRopa.SelectionChanged += dgvRopa_SelectionChanged;
+            txtBuscador.Enter += txtBuscador_Enter;
+            txtBuscador.Leave += txtBuscador_Leave;
+            txtBuscador.TextChanged += txtBuscador_TextChanged;
         }
-        Producto productoAgregado;
-        private void btnChaleco_Click(object sender, EventArgs e)
+
+        private void formRopa_Load(object sender, EventArgs e)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[8];
-            int numPiezas = int.Parse(nudPiezasChaleco.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            productosRopa = UtilidadesPedido.TodosLosProductosInventario
+                .OfType<ProductoRopa>()
+                .ToList();
+
+            FiltrarProductos(txtBuscador.Text);
+
+            dgvRopa.ColumnHeadersVisible = true;
+            dgvRopa.EnableHeadersVisualStyles = false;
+            dgvRopa.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dgvRopa.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvRopa.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvRopa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+            nubNumeroPiezas.Minimum = 1;
+            nubNumeroPiezas.Maximum = 20;
+            nubNumeroPiezas.Value = 1;
+            nubNumeroPiezas.ReadOnly = true;
+        }
+
+        private void FiltrarProductos(string filtro)
+        {
+            var productosFiltrados = string.IsNullOrWhiteSpace(filtro) || filtro == "Buscar"
+                ? productosRopa
+                : productosRopa.Where(p => p.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            dgvRopa.DataSource = productosFiltrados;
+
+            foreach (DataGridViewColumn columna in dgvRopa.Columns)
             {
-                productoAgregado = new ProductoRopa(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                if (columna.Name != "Nombre" && columna.Name != "Precio")
+                {
+                    columna.Visible = false;
+                }
             }
         }
 
-        private void btnChamarra_Click(object sender, EventArgs e)
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[9];
-            int numPiezas = int.Parse(nudPiezasChamarra.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            FiltrarProductos(txtBuscador.Text);
+        }
+
+        private void txtBuscador_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscador.Text == "Buscar")
             {
-                productoAgregado = new ProductoRopa(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                txtBuscador.Text = "";
             }
         }
 
-        private void nudPiezasVestido_Click(object sender, EventArgs e)
+        private void txtBuscador_Leave(object sender, EventArgs e)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[7];
-            int numPiezas = int.Parse(nudPiezaVestido.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            if (string.IsNullOrWhiteSpace(txtBuscador.Text))
             {
-                productoAgregado = new ProductoRopa(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                txtBuscador.Text = "Buscar";
             }
         }
 
-        private void btnPantalon_Click(object sender, EventArgs e)
+        private void dgvRopa_SelectionChanged(object sender, EventArgs e)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[6];
-            int numPiezas = int.Parse(nudPiezasPantalón.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            if (dgvRopa.CurrentRow != null)
             {
-                productoAgregado = new ProductoRopa(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                productoSeleccionado = dgvRopa.CurrentRow.DataBoundItem as ProductoRopa;
             }
         }
 
-        private void btnCamisea_Click(object sender, EventArgs e)
+        private void btnAgregarProductoAlCarrito_Click(object sender, EventArgs e)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[5];
-            int numPiezas = int.Parse(nudPiezasCamiseta.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            if (productoSeleccionado == null)
             {
-                productoAgregado = new ProductoRopa(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
+                MessageBox.Show("Seleccione un producto primero.", "Producto no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            int cantidadSeleccionada = (int)nubNumeroPiezas.Value;
+
+            if (cantidadSeleccionada > productoSeleccionado.Cantidad)
             {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                MessageBox.Show("La cantidad seleccionada excede el stock disponible.", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            var productoParaComprar = new ProductoRopa(
+                productoSeleccionado.Nombre,
+                productoSeleccionado.Precio,
+                cantidadSeleccionada,
+                productoSeleccionado.Impuesto,
+                productoSeleccionado.Descuento
+            );
+
+            UtilidadesPedido.productosComprados.Add(productoParaComprar);
+
+            productoSeleccionado.Cantidad -= cantidadSeleccionada;
+            dgvRopa.Refresh();
+
+            MessageBox.Show("Producto añadido al carrito correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

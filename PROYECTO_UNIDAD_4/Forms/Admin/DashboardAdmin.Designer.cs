@@ -92,7 +92,7 @@
             panelVertical.Dock = DockStyle.Left;
             panelVertical.Location = new Point(0, 35);
             panelVertical.Name = "panelVertical";
-            panelVertical.Size = new Size(225, 616);
+            panelVertical.Size = new Size(225, 719);
             panelVertical.TabIndex = 1;
             // 
             // btnSalir
@@ -206,14 +206,14 @@
             pnlContenedor.Dock = DockStyle.Fill;
             pnlContenedor.Location = new Point(225, 35);
             pnlContenedor.Name = "pnlContenedor";
-            pnlContenedor.Size = new Size(1076, 616);
+            pnlContenedor.Size = new Size(1076, 719);
             pnlContenedor.TabIndex = 2;
             // 
             // DashboardAdmin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1301, 651);
+            ClientSize = new Size(1301, 754);
             Controls.Add(pnlContenedor);
             Controls.Add(panelVertical);
             Controls.Add(BarraTiulo);

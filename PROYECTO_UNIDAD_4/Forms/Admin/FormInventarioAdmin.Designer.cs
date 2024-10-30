@@ -42,6 +42,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             dgvInventario = new Guna.UI2.WinForms.Guna2DataGridView();
             btnEliminar = new Button();
             btnEditar = new Button();
@@ -58,6 +60,7 @@
             lblDescuento = new Guna.UI2.WinForms.Guna2HtmlLabel();
             picLogon = new PictureBox();
             lblInven = new Label();
+            cmbElegirCategoría = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picLogon).BeginInit();
             SuspendLayout();
@@ -85,7 +88,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvInventario.DefaultCellStyle = dataGridViewCellStyle3;
             dgvInventario.GridColor = Color.Black;
-            dgvInventario.Location = new Point(154, 468);
+            dgvInventario.Location = new Point(196, 357);
             dgvInventario.Name = "dgvInventario";
             dgvInventario.RowHeadersVisible = false;
             dgvInventario.RowHeadersWidth = 51;
@@ -125,13 +128,13 @@
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Image = Properties.Resources.eliminar;
             btnEliminar.ImageAlign = ContentAlignment.MiddleRight;
-            btnEliminar.Location = new Point(606, 300);
+            btnEliminar.Location = new Point(679, 262);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(147, 55);
+            btnEliminar.Size = new Size(159, 48);
             btnEliminar.TabIndex = 1;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Visible = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnEditar
             // 
@@ -143,7 +146,7 @@
             btnEditar.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEditar.Image = Properties.Resources.editar;
             btnEditar.ImageAlign = ContentAlignment.MiddleRight;
-            btnEditar.Location = new Point(606, 239);
+            btnEditar.Location = new Point(679, 201);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(159, 45);
             btnEditar.TabIndex = 2;
@@ -161,13 +164,13 @@
             btnAñadir.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAñadir.Image = Properties.Resources.añadirLogo;
             btnAñadir.ImageAlign = ContentAlignment.MiddleRight;
-            btnAñadir.Location = new Point(606, 175);
+            btnAñadir.Location = new Point(679, 137);
             btnAñadir.Name = "btnAñadir";
             btnAñadir.Size = new Size(159, 45);
             btnAñadir.TabIndex = 3;
             btnAñadir.Text = "Añadir";
             btnAñadir.UseVisualStyleBackColor = false;
-            btnAñadir.Visible = false;
+            btnAñadir.Click += btnAñadir_Click;
             // 
             // txtProducto
             // 
@@ -181,7 +184,7 @@
             txtProducto.Font = new Font("Segoe UI", 9F);
             txtProducto.ForeColor = Color.Black;
             txtProducto.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtProducto.Location = new Point(354, 121);
+            txtProducto.Location = new Point(427, 83);
             txtProducto.Margin = new Padding(3, 5, 3, 5);
             txtProducto.Name = "txtProducto";
             txtProducto.PasswordChar = '\0';
@@ -203,7 +206,7 @@
             txtPiezas.Font = new Font("Segoe UI", 9F);
             txtPiezas.ForeColor = Color.Black;
             txtPiezas.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPiezas.Location = new Point(354, 176);
+            txtPiezas.Location = new Point(427, 138);
             txtPiezas.Margin = new Padding(3, 5, 3, 5);
             txtPiezas.Name = "txtPiezas";
             txtPiezas.PasswordChar = '\0';
@@ -225,7 +228,7 @@
             txtPrecio.Font = new Font("Segoe UI", 9F);
             txtPrecio.ForeColor = Color.Black;
             txtPrecio.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPrecio.Location = new Point(354, 228);
+            txtPrecio.Location = new Point(427, 190);
             txtPrecio.Margin = new Padding(3, 5, 3, 5);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.PasswordChar = '\0';
@@ -240,7 +243,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(223, 132);
+            label1.Location = new Point(296, 94);
             label1.Name = "label1";
             label1.Size = new Size(97, 23);
             label1.TabIndex = 9;
@@ -251,7 +254,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(259, 187);
+            label3.Location = new Point(332, 149);
             label3.Name = "label3";
             label3.Size = new Size(61, 23);
             label3.TabIndex = 11;
@@ -262,7 +265,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(249, 239);
+            label4.Location = new Point(322, 201);
             label4.Name = "label4";
             label4.Size = new Size(71, 23);
             label4.TabIndex = 12;
@@ -273,7 +276,7 @@
             lblImpuesto.BackColor = Color.Transparent;
             lblImpuesto.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblImpuesto.ForeColor = Color.White;
-            lblImpuesto.Location = new Point(226, 290);
+            lblImpuesto.Location = new Point(299, 252);
             lblImpuesto.Margin = new Padding(3, 4, 3, 4);
             lblImpuesto.Name = "lblImpuesto";
             lblImpuesto.Size = new Size(94, 25);
@@ -292,7 +295,7 @@
             txtImpuesto.Font = new Font("Segoe UI", 9F);
             txtImpuesto.ForeColor = Color.Black;
             txtImpuesto.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtImpuesto.Location = new Point(354, 281);
+            txtImpuesto.Location = new Point(427, 243);
             txtImpuesto.Margin = new Padding(3, 5, 3, 5);
             txtImpuesto.Name = "txtImpuesto";
             txtImpuesto.PasswordChar = '\0';
@@ -314,7 +317,7 @@
             txtDescuento.Font = new Font("Segoe UI", 9F);
             txtDescuento.ForeColor = Color.Black;
             txtDescuento.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtDescuento.Location = new Point(354, 332);
+            txtDescuento.Location = new Point(427, 294);
             txtDescuento.Margin = new Padding(3, 5, 3, 5);
             txtDescuento.Name = "txtDescuento";
             txtDescuento.PasswordChar = '\0';
@@ -329,7 +332,7 @@
             lblDescuento.BackColor = Color.Transparent;
             lblDescuento.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblDescuento.ForeColor = Color.White;
-            lblDescuento.Location = new Point(212, 341);
+            lblDescuento.Location = new Point(285, 303);
             lblDescuento.Margin = new Padding(3, 4, 3, 4);
             lblDescuento.Name = "lblDescuento";
             lblDescuento.Size = new Size(108, 25);
@@ -357,12 +360,31 @@
             lblInven.TabIndex = 18;
             lblInven.Text = "INVENTARIO";
             // 
+            // cmbElegirCategoría
+            // 
+            cmbElegirCategoría.BackColor = Color.Transparent;
+            cmbElegirCategoría.CustomizableEdges = customizableEdges11;
+            cmbElegirCategoría.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbElegirCategoría.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbElegirCategoría.FocusedColor = Color.FromArgb(94, 148, 255);
+            cmbElegirCategoría.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cmbElegirCategoría.Font = new Font("Segoe UI", 10F);
+            cmbElegirCategoría.ForeColor = Color.FromArgb(68, 88, 112);
+            cmbElegirCategoría.ItemHeight = 30;
+            cmbElegirCategoría.Items.AddRange(new object[] { "Ropa", "Alimento", "Electrónica" });
+            cmbElegirCategoría.Location = new Point(679, 83);
+            cmbElegirCategoría.Name = "cmbElegirCategoría";
+            cmbElegirCategoría.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            cmbElegirCategoría.Size = new Size(175, 36);
+            cmbElegirCategoría.TabIndex = 19;
+            // 
             // FormInventarioAdmin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(49, 66, 82);
             ClientSize = new Size(1162, 790);
+            Controls.Add(cmbElegirCategoría);
             Controls.Add(lblInven);
             Controls.Add(picLogon);
             Controls.Add(lblDescuento);
@@ -407,5 +429,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblDescuento;
         private PictureBox picLogon;
         private Label lblInven;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbElegirCategoría;
     }
 }

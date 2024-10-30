@@ -14,108 +14,126 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
 {
     public partial class formElectrodomesticos : Form
     {
+        private ProductoElectronico productoSeleccionado;
+        private List<ProductoElectronico> productosElectronicos;
+
         public formElectrodomesticos()
         {
             InitializeComponent();
-
-
+            this.Load += formElectrodomesticos_Load;
+            dgvElectronica.SelectionChanged += dgvElectronica_SelectionChanged;
+            txtBuscador.Enter += txtBuscador_Enter;
+            txtBuscador.Leave += txtBuscador_Leave;
+            txtBuscador.TextChanged += txtBuscador_TextChanged;
         }
 
-        Producto productoAgregado;
-        Producto productoSelecionado;
-        private void picAudifonos_Click(object sender, EventArgs e)
+        private void formElectrodomesticos_Load(object sender, EventArgs e)
         {
-            
+            // Asignar la lista de productos electrónicos a la variable de clase productosElectronicos
+            productosElectronicos = UtilidadesPedido.TodosLosProductosInventario
+                .OfType<ProductoElectronico>()
+                .ToList();
+
+            // Mostrar los productos en el DataGridView al cargar el formulario
+            FiltrarProductos(txtBuscador.Text);
+
+            // Configurar estilo de encabezados
+            dgvElectronica.ColumnHeadersVisible = true;
+            dgvElectronica.EnableHeadersVisualStyles = false;
+            dgvElectronica.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dgvElectronica.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvElectronica.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvElectronica.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+            // Configurar el NumericUpDown
+            nubNumeroPiezas.Minimum = 1;
+            nubNumeroPiezas.Maximum = 20;
+            nubNumeroPiezas.Value = 1;
+            nubNumeroPiezas.ReadOnly = true;
         }
 
-        private void btnAgregarAudifonos_Click(object sender, EventArgs e)
+        private void FiltrarProductos(string filtro)
         {
-             productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[4];
-            int numPiezas = int.Parse(nudpiezasAuriculares.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
-            {
-                 productoAgregado = new ProductoElectronico(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto,productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
-            }
-        }
+            // Si el filtro es "Buscar" o está vacío, mostrar todos los productos electrónicos
+            var productosFiltrados = string.IsNullOrWhiteSpace(filtro) || filtro == "Buscar"
+                ? productosElectronicos
+                : productosElectronicos.Where(p => p.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
 
-        private void btnAgregarLaptop_Click(object sender, EventArgs e)
-        {
-             productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[0];
-            int numPiezas = int.Parse(nudpiezasLaptop.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
-            {
-                 productoAgregado = new ProductoElectronico(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
-            }
-        }
+            // Asignar los productos filtrados al DataGridView
+            dgvElectronica.DataSource = productosFiltrados;
 
-        private void btnAgregarTelefono_Click(object sender, EventArgs e)
-        {
-             productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[1];
-            int numPiezas = int.Parse(nudpiezasSmartphone.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            // Mostrar solo las columnas de Nombre y Precio
+            foreach (DataGridViewColumn columna in dgvElectronica.Columns)
             {
-                 productoAgregado = new ProductoElectronico(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                if (columna.Name != "Nombre" && columna.Name != "Precio")
+                {
+                    columna.Visible = false;
+                }
             }
         }
 
-        private void btnAgregarTablet_Click(object sender, EventArgs e)
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
-             productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[2];
-            int numPiezas = int.Parse(nudPiezasTablett.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            // Filtrar productos en tiempo real mientras se escribe en el txtBuscador
+            FiltrarProductos(txtBuscador.Text);
+        }
+
+        private void txtBuscador_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscador.Text == "Buscar")
             {
-                 productoAgregado = new ProductoElectronico(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                txtBuscador.Text = "";
             }
         }
 
-        private void btnAgregarTelevisor_Click(object sender, EventArgs e)
+        private void txtBuscador_Leave(object sender, EventArgs e)
         {
-             productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[3];
-            int numPiezas = int.Parse(nudpiezasTelevisor.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            if (string.IsNullOrWhiteSpace(txtBuscador.Text))
             {
-                 productoAgregado = new ProductoElectronico(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
+                txtBuscador.Text = "Buscar";
             }
-            else
+        }
+
+        private void dgvElectronica_SelectionChanged(object sender, EventArgs e)
+        {
+            // Obtener el producto seleccionado en la fila actual
+            if (dgvElectronica.CurrentRow != null)
             {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                productoSeleccionado = dgvElectronica.CurrentRow.DataBoundItem as ProductoElectronico;
             }
+        }
+
+        private void btnAgregarProductoAlCarrito_Click(object sender, EventArgs e)
+        {
+            if (productoSeleccionado == null)
+            {
+                MessageBox.Show("Seleccione un producto primero.", "Producto no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int cantidadSeleccionada = (int)nubNumeroPiezas.Value;
+
+            if (cantidadSeleccionada > productoSeleccionado.Cantidad)
+            {
+                MessageBox.Show("La cantidad seleccionada excede el stock disponible.", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var productoParaComprar = new ProductoElectronico(
+                productoSeleccionado.Nombre,
+                productoSeleccionado.Precio,
+                cantidadSeleccionada,
+                productoSeleccionado.Impuesto,
+                productoSeleccionado.Descuento
+            );
+
+            UtilidadesPedido.productosComprados.Add(productoParaComprar);
+
+            // Descontar del stock
+            productoSeleccionado.Cantidad -= cantidadSeleccionada;
+            dgvElectronica.Refresh(); // Actualizar el DataGridView para reflejar el nuevo stock
+
+            MessageBox.Show("Producto añadido al carrito correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

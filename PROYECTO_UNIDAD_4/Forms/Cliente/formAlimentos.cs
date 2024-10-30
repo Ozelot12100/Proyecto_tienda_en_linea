@@ -1,4 +1,5 @@
-﻿using PROYECTO_UNIDAD_4.Clases;
+﻿using Guna.UI2.WinForms;
+using PROYECTO_UNIDAD_4.Clases;
 using PROYECTO_UNIDAD_4.Clases.Productos;
 using System;
 using System.Collections.Generic;
@@ -15,102 +16,117 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
 {
     public partial class formAlimentos : Form
     {
+        private ProductoAlimenticio productoSeleccionado;
+        private List<ProductoAlimenticio> productosAlimentos;
+
         public formAlimentos()
         {
             InitializeComponent();
+            this.Load += formAlimentos_Load;
+            dgvAlimentos.SelectionChanged += dgvAlimentos_SelectionChanged;
+            txtBuscador.Enter += txtBuscador_Enter;
+            txtBuscador.Leave += txtBuscador_Leave;
+            txtBuscador.TextChanged += txtBuscador_TextChanged;
         }
 
-        Producto productoAgregado;
-
-        private void btnAgregarLaptop_Click(object sender, EventArgs e)
+        private void formAlimentos_Load(object sender, EventArgs e)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[11];
-            int numPiezas = int.Parse(nudPiezasPan.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas,productoSelecionado.Cantidad);
-            if(hayStock == true)
-            {
-                productoAgregado = new ProductoAlimenticio(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
-            }
+            productosAlimentos = UtilidadesPedido.TodosLosProductosInventario
+                .OfType<ProductoAlimenticio>()
+                .ToList();
+
+            FiltrarProductos(txtBuscador.Text);
+
+            dgvAlimentos.ColumnHeadersVisible = true;
+            dgvAlimentos.EnableHeadersVisualStyles = false;
+            dgvAlimentos.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+            dgvAlimentos.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvAlimentos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            dgvAlimentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
+            nubNumeroPiezas.Minimum = 1;
+            nubNumeroPiezas.Maximum = 20;
+            nubNumeroPiezas.Value = 1;
+            nubNumeroPiezas.ReadOnly = true;
         }
 
-        private void btnLeche_Click(object sender, EventArgs e)
+        private void FiltrarProductos(string filtro)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[12];
-            int numPiezas = int.Parse(nudPiezasLeche.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
-            {
-                productoAgregado = new ProductoAlimenticio(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
-            }
+            var productosFiltrados = string.IsNullOrWhiteSpace(filtro) || filtro == "Buscar"
+                ? productosAlimentos
+                : productosAlimentos.Where(p => p.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
 
-        }
+            dgvAlimentos.DataSource = productosFiltrados;
 
-        private void btnHuevos_Click(object sender, EventArgs e)
-        {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[14];
-            int numPiezas = int.Parse(nudPiezasHuevos.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            foreach (DataGridViewColumn columna in dgvAlimentos.Columns)
             {
-                productoAgregado = new ProductoAlimenticio(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                if (columna.Name != "Nombre" && columna.Name != "Precio")
+                {
+                    columna.Visible = false;
+                }
             }
         }
 
-        private void btnManzana_Click(object sender, EventArgs e)
+        private void txtBuscador_TextChanged(object sender, EventArgs e)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[10];
-            int numPiezas = int.Parse(nudPiezasManzanas.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            FiltrarProductos(txtBuscador.Text);
+        }
+
+        private void txtBuscador_Enter(object sender, EventArgs e)
+        {
+            if (txtBuscador.Text == "Buscar")
             {
-                productoAgregado = new ProductoAlimenticio(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
-            }
-            else
-            {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                txtBuscador.Text = "";
             }
         }
 
-        private void btnQueso_Click(object sender, EventArgs e)
+        private void txtBuscador_Leave(object sender, EventArgs e)
         {
-            Producto productoSelecionado = UtilidadesPedido.TodosLosProductosInventario[13];
-            int numPiezas = int.Parse(nudPiezasQueso.Value.ToString());
-            bool hayStock = UtilidadesPedido.ValidarStock(numPiezas, productoSelecionado.Cantidad);
-            if (hayStock == true)
+            if (string.IsNullOrWhiteSpace(txtBuscador.Text))
             {
-                productoAgregado = new ProductoAlimenticio(productoSelecionado.Nombre, productoSelecionado.Precio, numPiezas, productoSelecionado.Impuesto, productoSelecionado.Descuento);
-                UtilidadesPedido.productosComprados.Add(productoAgregado);
-                productoSelecionado.Cantidad = productoSelecionado.Cantidad - numPiezas;
-                MessageBox.Show("El producto de agregó al carrito");
+                txtBuscador.Text = "Buscar";
             }
-            else
+        }
+
+        private void dgvAlimentos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvAlimentos.CurrentRow != null)
             {
-                MessageBox.Show("No hay suficiente stock de este producto");
+                productoSeleccionado = dgvAlimentos.CurrentRow.DataBoundItem as ProductoAlimenticio;
             }
+        }
+
+        private void btnAgregarProductoAlCarrito_Click(object sender, EventArgs e)
+        {
+            if (productoSeleccionado == null)
+            {
+                MessageBox.Show("Seleccione un producto primero.", "Producto no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int cantidadSeleccionada = (int)nubNumeroPiezas.Value;
+
+            if (cantidadSeleccionada > productoSeleccionado.Cantidad)
+            {
+                MessageBox.Show("La cantidad seleccionada excede el stock disponible.", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var productoParaComprar = new ProductoAlimenticio(
+                productoSeleccionado.Nombre,
+                productoSeleccionado.Precio,
+                cantidadSeleccionada,
+                productoSeleccionado.Impuesto,
+                productoSeleccionado.Descuento
+            );
+
+            UtilidadesPedido.productosComprados.Add(productoParaComprar);
+
+            productoSeleccionado.Cantidad -= cantidadSeleccionada;
+            dgvAlimentos.Refresh();
+
+            MessageBox.Show("Producto añadido al carrito correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
+
 }
