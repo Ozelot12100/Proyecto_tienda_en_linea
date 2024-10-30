@@ -17,7 +17,7 @@ namespace PROYECTO_UNIDAD_4.Clases.Pago
 
         public void ProcesarReembolso()
         {
-            Console.WriteLine($"Lamentamos informarle que no hay sistema para devoluciones8");
+            Console.WriteLine($"Lamentamos informarle que no hay sistema para devoluciones en compras hechas con paypal");
         }
     }
 }

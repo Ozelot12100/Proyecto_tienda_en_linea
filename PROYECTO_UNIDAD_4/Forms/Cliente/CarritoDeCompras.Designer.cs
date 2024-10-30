@@ -158,7 +158,7 @@
             btnFinalizarCompra.ForeColor = Color.White;
             btnFinalizarCompra.Image = Properties.Resources.finalizar_compra;
             btnFinalizarCompra.ImageAlign = ContentAlignment.MiddleRight;
-            btnFinalizarCompra.Location = new Point(810, 422);
+            btnFinalizarCompra.Location = new Point(563, 353);
             btnFinalizarCompra.Name = "btnFinalizarCompra";
             btnFinalizarCompra.Size = new Size(218, 65);
             btnFinalizarCompra.TabIndex = 5;

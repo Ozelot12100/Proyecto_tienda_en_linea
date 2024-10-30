@@ -11,12 +11,12 @@ namespace PROYECTO_UNIDAD_4.Clases.Pago
     {
         public void ProcesarPago()
         {
-            Console.WriteLine($"Su pago con tarjeta de crédito ha sido procesado$");
+            Console.WriteLine($"Su pago con tarjeta de crédito ha sido procesado");
         }
 
         public void ProcesarReembolso()
         {
-            Console.WriteLine($"Por el momento no contamos con reembolsos ni devoluciones");
+            Console.WriteLine($"Por el momento no contamos con reembolsos ni devoluciones para compras con tarjeta de crédito");
         }
     }
 }
