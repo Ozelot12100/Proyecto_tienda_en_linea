@@ -23,7 +23,7 @@ namespace PROYECTO_UNIDAD_4.Clases
             // Productos de Ropa
             new ProductoRopa("Camiseta", 100, 50,0,0.10),
             new ProductoRopa("Pantalón", 5000, 40,0,0.10),
-            new ProductoRopa("Vestido", 500, 30,0,0.10),
+            new ProductoRopa("Vestido", 500, 5,0,0.10),
             new ProductoRopa("Chaleco", 1000, 35,0,0.10),
             new ProductoRopa("Chamarra", 2000, 45,0,0.10),
 
@@ -37,14 +37,12 @@ namespace PROYECTO_UNIDAD_4.Clases
 
             public static List<Usuarios> TodosLosUsuariosLista { get; set; } = new List<Usuarios>
             {
-            new Usuarios("a","a","Administrador"),
-            new Usuarios("c","c","Cliente"),
-            new Usuarios("b","b","Vendedor")
-            };
+                new Usuarios("a","a","Administrador"),
+                new Usuarios("c","c","Cliente"),
+                new Usuarios("b","b","Vendedor")
+            };                    
 
-
-
-            public static List<Producto> productosComprados { get; set; } = new List<Producto>();
+        public static List<Producto> productosComprados { get; set; } = new List<Producto>();
 
             public static List<ReporAdmin> reportesGenerados { get; set; } = new List<ReporAdmin>();
 

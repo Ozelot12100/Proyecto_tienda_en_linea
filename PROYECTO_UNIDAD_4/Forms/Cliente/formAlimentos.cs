@@ -17,7 +17,6 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
     public partial class formAlimentos : Form
     {
         private ProductoAlimenticio productoSeleccionado;
-        private List<ProductoAlimenticio> productosAlimentos;
 
         public formAlimentos()
         {
@@ -31,10 +30,6 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
 
         private void formAlimentos_Load(object sender, EventArgs e)
         {
-            productosAlimentos = UtilidadesPedido.TodosLosProductosInventario
-                .OfType<ProductoAlimenticio>()
-                .ToList();
-
             FiltrarProductos(txtBuscador.Text);
 
             dgvAlimentos.ColumnHeadersVisible = true;
@@ -52,10 +47,12 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
 
         private void FiltrarProductos(string filtro)
         {
-            var productosFiltrados = string.IsNullOrWhiteSpace(filtro) || filtro == "Buscar"
-                ? productosAlimentos
-                : productosAlimentos.Where(p => p.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+            var productosFiltrados = UtilidadesPedido.TodosLosProductosInventario
+                .OfType<ProductoAlimenticio>()
+                .Where(p => string.IsNullOrWhiteSpace(filtro) || filtro == "Buscar" || p.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
+            dgvAlimentos.DataSource = null;
             dgvAlimentos.DataSource = productosFiltrados;
 
             foreach (DataGridViewColumn columna in dgvAlimentos.Columns)
@@ -123,7 +120,7 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
             UtilidadesPedido.productosComprados.Add(productoParaComprar);
 
             productoSeleccionado.Cantidad -= cantidadSeleccionada;
-            dgvAlimentos.Refresh();
+            FiltrarProductos(txtBuscador.Text);
 
             MessageBox.Show("Producto añadido al carrito correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

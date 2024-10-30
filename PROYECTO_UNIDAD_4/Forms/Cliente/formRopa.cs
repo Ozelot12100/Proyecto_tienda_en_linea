@@ -15,7 +15,6 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
     public partial class formRopa : Form
     {
         private ProductoRopa productoSeleccionado;
-        private List<ProductoRopa> productosRopa;
 
         public formRopa()
         {
@@ -29,12 +28,9 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
 
         private void formRopa_Load(object sender, EventArgs e)
         {
-            productosRopa = UtilidadesPedido.TodosLosProductosInventario
-                .OfType<ProductoRopa>()
-                .ToList();
-
             FiltrarProductos(txtBuscador.Text);
 
+            // Configuración de encabezados del DataGridView
             dgvRopa.ColumnHeadersVisible = true;
             dgvRopa.EnableHeadersVisualStyles = false;
             dgvRopa.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
@@ -42,6 +38,7 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
             dgvRopa.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             dgvRopa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
+            // Configurar el NumericUpDown
             nubNumeroPiezas.Minimum = 1;
             nubNumeroPiezas.Maximum = 20;
             nubNumeroPiezas.Value = 1;
@@ -50,10 +47,12 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
 
         private void FiltrarProductos(string filtro)
         {
-            var productosFiltrados = string.IsNullOrWhiteSpace(filtro) || filtro == "Buscar"
-                ? productosRopa
-                : productosRopa.Where(p => p.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+            var productosFiltrados = UtilidadesPedido.TodosLosProductosInventario
+                .OfType<ProductoRopa>()
+                .Where(p => string.IsNullOrWhiteSpace(filtro) || filtro == "Buscar" || p.Nombre.StartsWith(filtro, StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
+            dgvRopa.DataSource = null;
             dgvRopa.DataSource = productosFiltrados;
 
             foreach (DataGridViewColumn columna in dgvRopa.Columns)
@@ -121,7 +120,7 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
             UtilidadesPedido.productosComprados.Add(productoParaComprar);
 
             productoSeleccionado.Cantidad -= cantidadSeleccionada;
-            dgvRopa.Refresh();
+            FiltrarProductos(txtBuscador.Text);
 
             MessageBox.Show("Producto añadido al carrito correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
