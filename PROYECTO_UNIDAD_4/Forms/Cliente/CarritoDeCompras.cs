@@ -167,5 +167,19 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
                 dgvCarrito.Columns["Descuento"].HeaderText = "Descuento por pieza";
             }
         }
+
+        private void dgvCarrito_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verifica si la columna es de impuestos o descuentos
+            if (dgvCarrito.Columns[e.ColumnIndex].Name == "Impuesto" || dgvCarrito.Columns[e.ColumnIndex].Name == "Descuento")
+            {
+                if (e.Value != null && double.TryParse(e.Value.ToString(), out double valor))
+                {
+                    // Multiplica por 100 y formatea como porcentaje
+                    e.Value = (valor * 100).ToString("N2") + " %";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

@@ -119,6 +119,7 @@
             dgvInventario.ThemeStyle.RowsStyle.Height = 29;
             dgvInventario.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvInventario.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvInventario.CellFormatting += dgvInventario_CellFormatting;
             dgvInventario.SelectionChanged += dgvInventario_SelectionChanged;
             // 
             // btnEliminar

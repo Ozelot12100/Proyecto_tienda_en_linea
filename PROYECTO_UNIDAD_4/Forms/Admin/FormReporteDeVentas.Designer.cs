@@ -102,6 +102,7 @@
             dgvReporteAdmin.ThemeStyle.RowsStyle.Height = 29;
             dgvReporteAdmin.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvReporteAdmin.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvReporteAdmin.CellFormatting += dgvReporteAdmin_CellFormatting;
             // 
             // FormReporteDeVentas
             // 

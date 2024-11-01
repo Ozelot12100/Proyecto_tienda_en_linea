@@ -26,12 +26,29 @@ namespace PROYECTO_UNIDAD_4.Forms.Admin
 
         }
 
-        
+
 
         private void FormReporteDeVentas_Load(object sender, EventArgs e)
         {
             dgvReporteAdmin.DataSource = UtilidadesPedido.reportesGenerados;
 
+        }
+
+        private void dgvReporteAdmin_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verifica si la columna es de tipo monetario
+            if (dgvReporteAdmin.Columns[e.ColumnIndex].Name == "Subtotal" ||
+                dgvReporteAdmin.Columns[e.ColumnIndex].Name == "Impuestos" ||
+                dgvReporteAdmin.Columns[e.ColumnIndex].Name == "Descuento" ||
+                dgvReporteAdmin.Columns[e.ColumnIndex].Name == "Total")
+            {
+                if (e.Value != null && double.TryParse(e.Value.ToString(), out double valor))
+                {
+                    // Formatea como moneda
+                    e.Value = valor.ToString("C2");
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

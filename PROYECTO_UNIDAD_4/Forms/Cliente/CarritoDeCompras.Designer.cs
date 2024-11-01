@@ -66,11 +66,10 @@
             cmbMetodoPago.ForeColor = Color.Black;
             cmbMetodoPago.ItemHeight = 30;
             cmbMetodoPago.Items.AddRange(new object[] { "Tarjeta de credito", "PayPal", "Efectivo" });
-            cmbMetodoPago.Location = new Point(180, 265);
-            cmbMetodoPago.Margin = new Padding(3, 2, 3, 2);
+            cmbMetodoPago.Location = new Point(206, 353);
             cmbMetodoPago.Name = "cmbMetodoPago";
             cmbMetodoPago.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            cmbMetodoPago.Size = new Size(224, 36);
+            cmbMetodoPago.Size = new Size(255, 36);
             cmbMetodoPago.TabIndex = 1;
             // 
             // dgvCarrito
@@ -97,13 +96,11 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvCarrito.DefaultCellStyle = dataGridViewCellStyle3;
             dgvCarrito.GridColor = Color.FromArgb(231, 229, 255);
-            dgvCarrito.Location = new Point(10, 44);
-            dgvCarrito.Margin = new Padding(3, 2, 3, 2);
+            dgvCarrito.Location = new Point(11, 59);
             dgvCarrito.Name = "dgvCarrito";
             dgvCarrito.RowHeadersVisible = false;
             dgvCarrito.RowHeadersWidth = 51;
-            dgvCarrito.RowTemplate.Height = 29;
-            dgvCarrito.Size = new Size(898, 202);
+            dgvCarrito.Size = new Size(1026, 269);
             dgvCarrito.TabIndex = 2;
             dgvCarrito.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvCarrito.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -126,6 +123,7 @@
             dgvCarrito.ThemeStyle.RowsStyle.Height = 29;
             dgvCarrito.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvCarrito.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgvCarrito.CellFormatting += dgvCarrito_CellFormatting;
             dgvCarrito.DataBindingComplete += dgvCarrito_DataBindingComplete;
             // 
             // btnEliminar
@@ -135,10 +133,9 @@
             btnEliminar.ForeColor = Color.White;
             btnEliminar.Image = Properties.Resources.eliminar;
             btnEliminar.ImageAlign = ContentAlignment.MiddleRight;
-            btnEliminar.Location = new Point(774, 252);
-            btnEliminar.Margin = new Padding(3, 2, 3, 2);
+            btnEliminar.Location = new Point(885, 336);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(125, 49);
+            btnEliminar.Size = new Size(143, 65);
             btnEliminar.TabIndex = 3;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
@@ -149,9 +146,9 @@
             lblMetodoDePago.AutoSize = true;
             lblMetodoDePago.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold);
             lblMetodoDePago.ForeColor = Color.White;
-            lblMetodoDePago.Location = new Point(27, 265);
+            lblMetodoDePago.Location = new Point(31, 353);
             lblMetodoDePago.Name = "lblMetodoDePago";
-            lblMetodoDePago.Size = new Size(134, 18);
+            lblMetodoDePago.Size = new Size(161, 22);
             lblMetodoDePago.TabIndex = 4;
             lblMetodoDePago.Text = "Metodo de pago";
             // 
@@ -162,10 +159,9 @@
             btnFinalizarCompra.ForeColor = Color.White;
             btnFinalizarCompra.Image = Properties.Resources.finalizar_compra;
             btnFinalizarCompra.ImageAlign = ContentAlignment.MiddleRight;
-            btnFinalizarCompra.Location = new Point(493, 265);
-            btnFinalizarCompra.Margin = new Padding(3, 2, 3, 2);
+            btnFinalizarCompra.Location = new Point(563, 353);
             btnFinalizarCompra.Name = "btnFinalizarCompra";
-            btnFinalizarCompra.Size = new Size(191, 49);
+            btnFinalizarCompra.Size = new Size(218, 65);
             btnFinalizarCompra.TabIndex = 5;
             btnFinalizarCompra.Text = "Finalizar Compra";
             btnFinalizarCompra.UseVisualStyleBackColor = false;
@@ -183,11 +179,10 @@
             cmbTipoPago.ForeColor = Color.Black;
             cmbTipoPago.ItemHeight = 30;
             cmbTipoPago.Items.AddRange(new object[] { "En linea ", "En tienda" });
-            cmbTipoPago.Location = new Point(180, 305);
-            cmbTipoPago.Margin = new Padding(3, 2, 3, 2);
+            cmbTipoPago.Location = new Point(206, 407);
             cmbTipoPago.Name = "cmbTipoPago";
             cmbTipoPago.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            cmbTipoPago.Size = new Size(154, 36);
+            cmbTipoPago.Size = new Size(175, 36);
             cmbTipoPago.TabIndex = 6;
             // 
             // lblTipoPago
@@ -195,9 +190,9 @@
             lblTipoPago.AutoSize = true;
             lblTipoPago.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold);
             lblTipoPago.ForeColor = Color.White;
-            lblTipoPago.Location = new Point(34, 307);
+            lblTipoPago.Location = new Point(39, 409);
             lblTipoPago.Name = "lblTipoPago";
-            lblTipoPago.Size = new Size(125, 18);
+            lblTipoPago.Size = new Size(151, 22);
             lblTipoPago.TabIndex = 7;
             lblTipoPago.Text = "Tipo de compra";
             // 
@@ -207,7 +202,8 @@
             lblMostrarSubtotal.BorderStyle = BorderStyle.FixedSingle;
             lblMostrarSubtotal.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblMostrarSubtotal.ForeColor = Color.White;
-            lblMostrarSubtotal.Location = new Point(195, 362);
+            lblMostrarSubtotal.Location = new Point(223, 483);
+            lblMostrarSubtotal.Margin = new Padding(3, 4, 3, 4);
             lblMostrarSubtotal.Name = "lblMostrarSubtotal";
             lblMostrarSubtotal.Size = new Size(5, 4);
             lblMostrarSubtotal.TabIndex = 8;
@@ -219,7 +215,8 @@
             lblMostrarTotal.BorderStyle = BorderStyle.FixedSingle;
             lblMostrarTotal.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblMostrarTotal.ForeColor = Color.White;
-            lblMostrarTotal.Location = new Point(193, 476);
+            lblMostrarTotal.Location = new Point(221, 635);
+            lblMostrarTotal.Margin = new Padding(3, 4, 3, 4);
             lblMostrarTotal.Name = "lblMostrarTotal";
             lblMostrarTotal.Size = new Size(5, 4);
             lblMostrarTotal.TabIndex = 9;
@@ -231,9 +228,9 @@
             lblDescuento.BorderStyle = BorderStyle.FixedSingle;
             lblDescuento.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblDescuento.ForeColor = Color.White;
-            lblDescuento.Location = new Point(192, 404);
+            lblDescuento.Location = new Point(219, 539);
             lblDescuento.Name = "lblDescuento";
-            lblDescuento.Size = new Size(2, 21);
+            lblDescuento.Size = new Size(2, 25);
             lblDescuento.TabIndex = 10;
             // 
             // lblImpuestos
@@ -242,9 +239,9 @@
             lblImpuestos.BorderStyle = BorderStyle.FixedSingle;
             lblImpuestos.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblImpuestos.ForeColor = Color.White;
-            lblImpuestos.Location = new Point(192, 441);
+            lblImpuestos.Location = new Point(219, 588);
             lblImpuestos.Name = "lblImpuestos";
-            lblImpuestos.Size = new Size(2, 21);
+            lblImpuestos.Size = new Size(2, 25);
             lblImpuestos.TabIndex = 11;
             // 
             // lblSubtotall
@@ -252,9 +249,9 @@
             lblSubtotall.AutoSize = true;
             lblSubtotall.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
             lblSubtotall.ForeColor = Color.Cyan;
-            lblSubtotall.Location = new Point(116, 362);
+            lblSubtotall.Location = new Point(133, 483);
             lblSubtotall.Name = "lblSubtotall";
-            lblSubtotall.Size = new Size(73, 18);
+            lblSubtotall.Size = new Size(84, 22);
             lblSubtotall.TabIndex = 12;
             lblSubtotall.Text = "Subtotal:";
             // 
@@ -263,9 +260,9 @@
             lblMdescuento.AutoSize = true;
             lblMdescuento.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
             lblMdescuento.ForeColor = Color.Cyan;
-            lblMdescuento.Location = new Point(93, 404);
+            lblMdescuento.Location = new Point(106, 539);
             lblMdescuento.Name = "lblMdescuento";
-            lblMdescuento.Size = new Size(93, 18);
+            lblMdescuento.Size = new Size(110, 22);
             lblMdescuento.TabIndex = 13;
             lblMdescuento.Text = "Descuento:";
             // 
@@ -274,9 +271,9 @@
             lblMimpuestos.AutoSize = true;
             lblMimpuestos.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
             lblMimpuestos.ForeColor = Color.Cyan;
-            lblMimpuestos.Location = new Point(59, 441);
+            lblMimpuestos.Location = new Point(67, 588);
             lblMimpuestos.Name = "lblMimpuestos";
-            lblMimpuestos.Size = new Size(127, 18);
+            lblMimpuestos.Size = new Size(149, 22);
             lblMimpuestos.TabIndex = 14;
             lblMimpuestos.Text = "Total impuestos:";
             // 
@@ -285,9 +282,9 @@
             lblMTotal.AutoSize = true;
             lblMTotal.Font = new Font("Century Gothic", 10.8F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
             lblMTotal.ForeColor = Color.Cyan;
-            lblMTotal.Location = new Point(141, 476);
+            lblMTotal.Location = new Point(161, 635);
             lblMTotal.Name = "lblMTotal";
-            lblMTotal.Size = new Size(51, 18);
+            lblMTotal.Size = new Size(61, 22);
             lblMTotal.TabIndex = 15;
             lblMTotal.Text = "Total: ";
             // 
@@ -297,18 +294,18 @@
             lBLcaRROO.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lBLcaRROO.ForeColor = Color.White;
             lBLcaRROO.ImageAlign = ContentAlignment.MiddleRight;
-            lBLcaRROO.Location = new Point(426, 7);
+            lBLcaRROO.Location = new Point(487, 9);
             lBLcaRROO.Name = "lBLcaRROO";
-            lBLcaRROO.Size = new Size(114, 28);
+            lBLcaRROO.Size = new Size(142, 37);
             lBLcaRROO.TabIndex = 16;
             lBLcaRROO.Text = "CARRITO";
             // 
             // CarritoDeCompras
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(0, 90, 150);
-            ClientSize = new Size(1019, 546);
+            ClientSize = new Size(1165, 728);
             Controls.Add(lBLcaRROO);
             Controls.Add(lblMTotal);
             Controls.Add(lblMimpuestos);
@@ -326,7 +323,6 @@
             Controls.Add(dgvCarrito);
             Controls.Add(cmbMetodoPago);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "CarritoDeCompras";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CarritoDeCompras";

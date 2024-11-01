@@ -93,6 +93,7 @@
             dgvInventario.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvInventario.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dgvInventario.CellContentClick += dgvInventario_CellContentClick;
+            dgvInventario.CellFormatting += dgvInventario_CellFormatting;
             // 
             // FormInventarioVendedor
             // 
