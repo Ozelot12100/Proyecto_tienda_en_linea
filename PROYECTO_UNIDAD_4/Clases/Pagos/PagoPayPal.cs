@@ -12,12 +12,12 @@ namespace PROYECTO_UNIDAD_4.Clases.Pago
         public void ProcesarPago()
         {
             // Lógica para procesar el pago con tarjeta de crédito
-            Console.WriteLine($"Su pago con paypal ha sido procesado");
+            MessageBox.Show($"Su pago con paypal ha sido procesado por un total de {UtilidadesPedido.CalcularTotal(UtilidadesPedido.productosComprados)}");
         }
 
         public void ProcesarReembolso()
         {
-            Console.WriteLine($"Lamentamos informarle que no hay sistema para devoluciones en compras hechas con paypal");
+            MessageBox.Show($"Lamentamos informarle que no hay sistema para devoluciones en compras hechas con paypal");
         }
     }
 }

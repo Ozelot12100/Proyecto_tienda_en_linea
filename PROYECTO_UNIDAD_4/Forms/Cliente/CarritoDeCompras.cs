@@ -41,12 +41,13 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
                 return;
             }
 
-            // Calcular los totales de la compra
+            // Calcular subtotal, descuento, impuesto y total
             double subtotal = UtilidadesPedido.CalcularSubtotal(UtilidadesPedido.productosComprados);
             double impuestos = UtilidadesPedido.CalcularImpuestos(UtilidadesPedido.productosComprados);
             double descuento = UtilidadesPedido.CalcularDescuento(UtilidadesPedido.productosComprados);
             double total = UtilidadesPedido.CalcularTotal(UtilidadesPedido.productosComprados);
 
+            // Selección de método de pago
             int metodoEscojido = cmbMetodoPago.SelectedIndex;
             if (metodoEscojido == -1)
             {
@@ -54,16 +55,7 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            string metodoPagoSeleccionado = metodoEscojido switch
-            {
-                0 => "Tarjeta de Crédito",
-                1 => "PayPal",
-                2 => "Efectivo",
-                _ => ""
-            };
-
-            // Seleccionar tipo de compra
+            // Selección de tipo de compra
             int lugarCompra = cmbTipoPago.SelectedIndex;
             if (lugarCompra == -1)
             {
@@ -71,16 +63,47 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            // Polimorfismo en metodo de pago
+            IMetodoPago pago;
+            string metodoPagoSeleccionado = "";
 
-            Pedido pedido = lugarCompra == 0 ? new PedidoOnline() : new PedidoEnTienda();
+            if (metodoEscojido == 0)
+            {
+                pago = new PagoTarjetaCredito();
+                metodoPagoSeleccionado = "Tarjeta de Crédito";
+            }
+            else if (metodoEscojido == 1)
+            {
+                pago = new PagoPayPal();
+                metodoPagoSeleccionado = "PayPal";
+            }
+            else
+            {
+                pago = new PagoEfectivo();
+                metodoPagoSeleccionado = "Efectivo";
+            }
+            pago.ProcesarPago();
+            //Polimorfismo con tipo de compra
+            Pedido pedido;
+            string tipoDeCompra = "";
+            if (lugarCompra == 0)
+            {
+                pedido = new PedidoOnline();
+                tipoDeCompra = "En linea";
+            }
+            else
+            {
+                pedido = new PedidoEnTienda();
+                tipoDeCompra = "Tienda física";
+            }
             pedido.MostrarMensaje();
 
-            // Crear un reporte de la compra
-            ReporAdmin nuevoReporte = new ReporAdmin(DateTime.Now, subtotal, impuestos, descuento, total, metodoPagoSeleccionado);
+            // Crear reporte para el admin
+            ReporAdmin nuevoReporte = new ReporAdmin(DateTime.Now, subtotal, impuestos, descuento, total, metodoPagoSeleccionado, tipoDeCompra);
             nuevoReporte.Generar();
             UtilidadesPedido.reportesGenerados.Add(nuevoReporte);
 
-            // Limpiar el carrito y actualizar el DataGridView
+            //Borrar la lista del carrito, actualizar el dgv y los labels
             UtilidadesPedido.productosComprados.Clear();
             dgvCarrito.DataSource = null;
             dgvCarrito.DataSource = UtilidadesPedido.productosComprados;

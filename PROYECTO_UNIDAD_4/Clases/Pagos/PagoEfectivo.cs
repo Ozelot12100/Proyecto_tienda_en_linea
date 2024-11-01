@@ -12,12 +12,12 @@ namespace PROYECTO_UNIDAD_4.Clases.Pago
         public void ProcesarPago()
         {
             // Lógica para procesar el pago con tarjeta de crédito
-            Console.WriteLine($"Gracias por seguir comprando de la forma tradicional, que le vaya bien (8");
+            MessageBox.Show($"Pago en efectivo por un total de ${UtilidadesPedido.CalcularTotal(UtilidadesPedido.productosComprados)}, que le vaya bien (8");
         }
         
         public void ProcesarReembolso()
         {
-            Console.WriteLine($"Puede pasar a recoger su reembolso mañana a partir de las 7:00 am");
+            MessageBox.Show($"Puede pasar a recoger su reembolso mañana a partir de las 7:00 am");
         }
     }
 }

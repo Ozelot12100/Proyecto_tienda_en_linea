@@ -15,8 +15,9 @@ namespace PROYECTO_UNIDAD_4.Clases.Reportes
         public double Descuento { get; set; }
         public double Total { get; set; }
         public string MetodoDePago { get; set; }
-        
-        public ReporAdmin (DateTime fecha, double subtotal, double impuestos, double descuento, double total,string metodoPago)
+        public string TipoDeCompra {  get; set; }
+
+        public ReporAdmin (DateTime fecha, double subtotal, double impuestos, double descuento, double total,string metodoPago, string tipoDeCompra)
         {
             Fecha = fecha;
             Subtotal = subtotal;
@@ -24,12 +25,13 @@ namespace PROYECTO_UNIDAD_4.Clases.Reportes
             Descuento = descuento;
             Total = total;
             MetodoDePago = metodoPago;
+            TipoDeCompra = tipoDeCompra;
         }
         public void Generar()
         {
             // Mostrar mensaje de compra exitosa
-            MessageBox.Show($"Compra finalizada exitosamente por un total de ${UtilidadesPedido.CalcularTotal(UtilidadesPedido.productosComprados)}.", "Compra Exitosa",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Tiene un máximo de 3 días para pedir reembolso", "Compra Exitosa",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }
