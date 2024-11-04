@@ -73,10 +73,16 @@ namespace PROYECTO_UNIDAD_4.Forms
         {
             Application.Exit();
         }
-        
+
         private void btnReembolso_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            HistorialCliente formHija = new HistorialCliente();
+            mostrarForm.AbrirFormEnPanel(this.pnlContenedor, formHija);
         }
     }
 }

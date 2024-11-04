@@ -100,7 +100,6 @@ namespace PROYECTO_UNIDAD_4.Forms.Cliente
 
             // Crear reporte para el admin
             ReporAdmin nuevoReporte = new ReporAdmin(DateTime.Now, subtotal, impuestos, descuento, total, metodoPagoSeleccionado, tipoDeCompra);
-            nuevoReporte.Generar();
             UtilidadesPedido.reportesGenerados.Add(nuevoReporte);
             //Borrar la lista del carrito, actualizar el dgv y los labels
             UtilidadesPedido.productosComprados.Clear();

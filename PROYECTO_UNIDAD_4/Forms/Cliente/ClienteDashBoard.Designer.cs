@@ -57,6 +57,8 @@ namespace PROYECTO_UNIDAD_4.Forms
             btnCarrito = new Guna.UI2.WinForms.Guna2Button();
             btnCerrar = new Guna.UI2.WinForms.Guna2Button();
             pnlContenedor = new Panel();
+            panel3 = new Panel();
+            btnHistorial = new Button();
             guna2Panel1.SuspendLayout();
             guna2ShadowPanel1.SuspendLayout();
             SuspendLayout();
@@ -64,6 +66,8 @@ namespace PROYECTO_UNIDAD_4.Forms
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.FromArgb(26, 32, 40);
+            guna2Panel1.Controls.Add(panel3);
+            guna2Panel1.Controls.Add(btnHistorial);
             guna2Panel1.Controls.Add(picLogo);
             guna2Panel1.Controls.Add(btnSalir);
             guna2Panel1.Controls.Add(btnElectrodomesticos);
@@ -136,7 +140,7 @@ namespace PROYECTO_UNIDAD_4.Forms
             btnElectrodomesticos.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             btnElectrodomesticos.Image = (Image)resources.GetObject("btnElectrodomesticos.Image");
             btnElectrodomesticos.ImageSize = new Size(60, 60);
-            btnElectrodomesticos.Location = new Point(34, 503);
+            btnElectrodomesticos.Location = new Point(35, 457);
             btnElectrodomesticos.Margin = new Padding(3, 4, 3, 4);
             btnElectrodomesticos.Name = "btnElectrodomesticos";
             btnElectrodomesticos.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -161,7 +165,7 @@ namespace PROYECTO_UNIDAD_4.Forms
             btnAlimento.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             btnAlimento.Image = (Image)resources.GetObject("btnAlimento.Image");
             btnAlimento.ImageSize = new Size(60, 60);
-            btnAlimento.Location = new Point(35, 336);
+            btnAlimento.Location = new Point(35, 308);
             btnAlimento.Margin = new Padding(3, 4, 3, 4);
             btnAlimento.Name = "btnAlimento";
             btnAlimento.ShadowDecoration.CustomizableEdges = customizableEdges8;
@@ -186,7 +190,7 @@ namespace PROYECTO_UNIDAD_4.Forms
             btnRopa.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             btnRopa.Image = (Image)resources.GetObject("btnRopa.Image");
             btnRopa.ImageSize = new Size(60, 60);
-            btnRopa.Location = new Point(34, 165);
+            btnRopa.Location = new Point(34, 152);
             btnRopa.Margin = new Padding(3, 4, 3, 4);
             btnRopa.Name = "btnRopa";
             btnRopa.ShadowDecoration.CustomizableEdges = customizableEdges10;
@@ -256,6 +260,32 @@ namespace PROYECTO_UNIDAD_4.Forms
             pnlContenedor.TabIndex = 10;
             pnlContenedor.Paint += pnlContenedor_Paint;
             // 
+            // panel3
+            // 
+            panel3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel3.BackColor = Color.FromArgb(0, 80, 200);
+            panel3.Location = new Point(4, 610);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(10, 25);
+            panel3.TabIndex = 11;
+            // 
+            // btnHistorial
+            // 
+            btnHistorial.FlatAppearance.BorderSize = 0;
+            btnHistorial.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 80, 200);
+            btnHistorial.FlatStyle = FlatStyle.Flat;
+            btnHistorial.Font = new Font("Century Gothic", 10.8F);
+            btnHistorial.ForeColor = Color.White;
+            btnHistorial.Image = Properties.Resources.usuario;
+            btnHistorial.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHistorial.Location = new Point(12, 610);
+            btnHistorial.Name = "btnHistorial";
+            btnHistorial.Size = new Size(177, 29);
+            btnHistorial.TabIndex = 10;
+            btnHistorial.Text = "Historial";
+            btnHistorial.UseVisualStyleBackColor = true;
+            btnHistorial.Click += btnHistorial_Click;
+            // 
             // ClienteDashBoard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -287,5 +317,7 @@ namespace PROYECTO_UNIDAD_4.Forms
         private Guna.UI2.WinForms.Guna2Button btnCarrito;
         private Guna.UI2.WinForms.Guna2Button btnCerrar;
         private Guna.UI2.WinForms.Guna2Button btnSalir;
+        private Panel panel3;
+        private Button btnHistorial;
     }
 }

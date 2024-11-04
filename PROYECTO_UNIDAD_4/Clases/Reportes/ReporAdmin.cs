@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PROYECTO_UNIDAD_4.Clases.Reportes
 {
-    internal class ReporAdmin : IGenerarReporte
+    internal class ReporAdmin 
     {
         public DateTime Fecha { get; set; }
         public double Subtotal { get; set; }
@@ -27,11 +27,6 @@ namespace PROYECTO_UNIDAD_4.Clases.Reportes
             MetodoDePago = metodoPago;
             TipoDeCompra = tipoDeCompra;
         }
-        public void Generar()
-        {
-            // Mostrar mensaje de compra exitosa
-            MessageBox.Show($"Tiene un máximo de 3 días para pedir reembolso", "Compra Exitosa",
-                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
+        
     }
 }

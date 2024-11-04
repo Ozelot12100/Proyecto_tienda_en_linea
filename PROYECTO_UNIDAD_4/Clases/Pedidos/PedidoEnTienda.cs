@@ -11,7 +11,6 @@ namespace PROYECTO_UNIDAD_4.Clases.Pedidos
         public override void MostrarMensaje()
         {
             MessageBox.Show("Gracias por seguir comprando de forma física, le regalamos estos cupones de cortesia");
-
         }
     }
 }
